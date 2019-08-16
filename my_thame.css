@@ -1,0 +1,83 @@
+:root {
+    --GREEN: #8DB740;
+    --DARK_GREEN: #6A8759;
+    --PURPLE: #9876AA;
+    --DARK_ORANGE: #CC7832;
+    --ORANGE: #E6AE48;
+    --BLUE: #6897BB;
+}
+
+.shower.list {
+    background: #A9B7C6;
+}
+.slide {
+    background: #2B2B2B;
+}
+.slide,
+.slide h2,
+.slide li::before {
+    color: #A9B7C6;
+}
+.picture {
+    width: 100vw;
+}
+.caption {
+    color: #2B2B2B;
+}
+
+.slide pre code {
+    font-family: Menlo;
+}
+
+.slide pre code:not(:only-child)::before {
+    content: counter(code, decimal-leading-zero);
+}
+
+// svg
+
+svg.railroad-diagram {
+    background-color: #2B2B2B;
+}
+
+svg.railroad-diagram path {
+    stroke-width: 3px;
+    stroke: #A9B7C6;
+    fill: #2B2B2B;
+}
+
+svg.railroad-diagram rect {
+    stroke-width: 3px;
+    stroke: #A9B7C6;
+    fill: #2B2B2B;
+}
+
+svg.railroad-diagram text {
+    fill: #A9B7C6;
+    font: bold 14px monospace;
+    text-anchor: middle;
+}
+
+.no-code::before {
+    display: none;
+}
+
+.mark {
+    background-color: red;
+    height: 1em;
+}
+
+.no-term {
+    background-color: rgba(152, 118, 170, 0.5) !important;
+}
+
+.term {
+    background-color: rgba(230, 174, 72, 0.5) !important;
+}
+
+.good {
+    background-color: rgba(0, 255, 22, 0.3) !important;
+}
+
+.bad {
+    background-color: rgba(255, 0, 4, 0.3) !important;
+}

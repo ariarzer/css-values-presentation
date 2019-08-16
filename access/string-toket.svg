@@ -1,0 +1,97 @@
+<svg class="railroad-diagram" height="110" viewBox="0 0 729 110" width="729">
+    <g transform="translate(.5 .5)">
+        <path d="M 20 31 v 20 m 10 -20 v 20 m -10 -10 h 20.5"/>
+        <g>
+            <path d="M40 41h0.0"/>
+            <path d="M108.0 41h0.0"/>
+            <path d="M40.0 41h20"/>
+            <g>
+                <path d="M60.0 41h28"/>
+            </g>
+            <path d="M88.0 41h20"/>
+            <path d="M40.0 41a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"/>
+            <g>
+                <path d="M60.0 61h0.0"/>
+                <path d="M88.0 61h0.0"/>
+                <rect height="22" rx="10" ry="10" width="28" x="60.0" y="50"/>
+                <text x="74.0" y="65">
+                    -
+                </text>
+            </g>
+            <path d="M88.0 61a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10">
+            </path>
+        </g>
+        <g>
+            <path d="M108 41h0.0"/>
+            <path d="M344.0 41h0.0">
+            </path>
+            <path d="M108.0 41h20"/>
+            <g>
+                <path d="M128.0 41h0.0">
+                </path>
+                <path d="M324.0 41h0.0"/>
+                <rect height="22" width="196" x="128.0" y="30"/>
+                <text x="226.0" y="45">a-z A-Z _ or non-ASCII</text>
+            </g>
+            <path d="M324.0 41h20"/>
+            <path d="M108.0 41a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"/>
+            <g>
+                <path d="M128.0 71h64.0"/>
+                <path d="M260.0 71h64.0"/>
+                <rect height="22" width="68" x="192.0" y="60"/>
+                <text x="226.0" y="75">
+                    escape
+                </text>
+            </g>
+            <path d="M324.0 71a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10"/>
+        </g>
+        <g>
+            <path d="M344 41h0.0"/>
+            <path d="M688.0 41h0.0"/>
+            <path d="M344.0 41a10 10 0 0 0 10 -10v0a10 10 0 0 1 10 -10"/>
+            <g>
+                <path d="M364.0 21h304"/>
+            </g>
+            <path d="M668.0 21a10 10 0 0 1 10 10v0a10 10 0 0 0 10 10"/>
+            <path d="M344.0 41h20"/>
+            <g>
+                <path d="M364.0 41h0.0"/>
+                <path d="M668.0 41h0.0"/>
+                <path d="M364.0 41h10"/>
+                <g>
+                    <path d="M374.0 41h0.0"/>
+                    <path d="M658.0 41h0.0"/>
+                    <path d="M374.0 41h20"/>
+                    <g>
+                        <path d="M394.0 41h0.0"/>
+                        <path d="M638.0 41h0.0"/>
+                        <rect height="22" width="244" x="394.0" y="30">
+                        </rect>
+                        <text x="516.0" y="45">a-z A-Z 0-9 _ - or non-ASCII</text>
+                    </g>
+                    <path d="M638.0 41h20"/>
+                    <path d="M374.0 41a10 10 0 0 1 10 10v10a10 10 0 0 0 10 10"/>
+                    <g>
+                        <path d="M394.0 71h88.0"/>
+                        <path d="M550.0 71h88.0"/>
+                        <rect height="22" width="68" x="482.0" y="60"/>
+                        <text x="516.0" y="75">
+                            escape
+                        </text>
+                    </g>
+                    <path d="M638.0 71a10 10 0 0 0 10 -10v-10a10 10 0 0 1 10 -10">
+                    </path>
+                </g>
+                <path d="M658.0 41h10"/>
+                <path d="M374.0 41a10 10 0 0 0 -10 10v29a10 10 0 0 0 10 10"/>
+                <g>
+                    <path d="M374.0 90h284"/>
+                </g>
+                <path d="M658.0 90a10 10 0 0 0 10 -10v-29a10 10 0 0 0 -10 -10">
+                </path>
+            </g>
+            <path d="M668.0 41h20"/>
+        </g>
+        <path d="M 688 41 h 20 m -10 -10 v 20 m 10 -20 v 20"/>
+    </g>
+</svg>
