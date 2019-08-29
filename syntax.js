@@ -19,6 +19,10 @@ const grammar = [
     color: GREEN
   },
   {
+    regexp: /(?<=\d)(deg)/g,
+    color: GREEN
+  },
+  {
     regexp: /(?<=\d)(vw)/g,
     color: GREEN
   },
@@ -33,6 +37,8 @@ const grammar = [
       'before',
       'h1-counter',
       'blurry',
+      '#el',
+      '#id'
     ],
     color: ORANGE
   },
@@ -42,6 +48,10 @@ const grammar = [
   },
   {
     regexp: /(?<=\.)(class)/g,
+    color: ORANGE
+  },
+  {
+    regexp: /('anim')(?= )/g,
     color: ORANGE
   },
   {
@@ -69,6 +79,10 @@ const grammar = [
     color: DARK_ORANGE
   },
   {
+    regexp: /(?<!au|s)(to)/g,
+    color: DARK_ORANGE
+  },
+  {
     regexp: /(h1)(?!-)/g,
     color: DARK_ORANGE
   },
@@ -78,7 +92,6 @@ const grammar = [
       'div',
       'body',
       'from',
-      'to',
     ],
     color: DARK_ORANGE
   },
@@ -117,7 +130,8 @@ const grammar = [
       'green',
       'infinite',
       'alternate',
-      'list-item'
+      'list-item',
+      'red',
     ],
     color: GREEN
   },
