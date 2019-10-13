@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="shower/themes/ribbon/styles/styles.css">
+    <link rel="stylesheet" href="./global_style.css">
+    <link rel="stylesheet" href="./front_conf_theme.css">
     <link rel="stylesheet" href="./my_thame.css">
     <style>
         .shower {
@@ -20,7 +22,8 @@
     </header>
 
     <section class="slide" id="head">
-        <h2 class="shout shrink">Типы данных <br>в CSS</h2>
+        <h2>Типы данных в CSS</h2>
+        <h3>София Валитова</h3>
         <style>
             .slide#head::after {
                 visibility: hidden;
@@ -30,11 +33,21 @@
 
     <section class="slide">
         <h2>Предыстория</h2>
-        <p>calc() иногда работает не так, как я ожидаю</p>
+        <p>CSS иногда работает не так, как я ожидаю</p>
         <pre lang="css">
-            <code class="next">calc(1.5em + 1vw)</code>
-            <code class="next">calc(- 25px)</code>
-            <code class="next">calc(25% - 0)</code>
+            <code class=" next">height: calc(3px+4px)</code>
+            <code class=" next">height: calc(3px - 4px)</code>
+            <code class="next ">height: calc(25% - 0)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Предыстория</h2>
+        <p>CSS иногда работает не так, как я ожидаю</p>
+        <pre lang="css">
+            <code class=" bad">height: calc(3px+4px)</code>
+            <code class=" ">height: calc(3px - 4px)       <span class="next">// => 0px</span></code>
+            <code class="bad ">height: calc(25% - 0)</code>
         </pre>
     </section>
 
@@ -58,46 +71,56 @@
         </div>
     </section>
 
-    <section class="slide">
-        <pre lang="bnf">
-            <code>&lt;style-rule> ::=</code>
-            <code>  &lt;selectors-list> {</code>
-            <code>    &lt;properties-list></code>
-            <code>  }</code>
-            <code>&lt;selectors-list> ::=</code>
-            <code>  &lt;selector>[':' &lt;pseudo-class>] ['::' &lt;pseudo-element>]</code>
-            <code>  [',' &lt;selectors-list>]</code>
-            <code>&lt;properties-list> ::=</code>
-            <code>  [&lt;property> ':' &lt;value>] [';' &lt;properties-list>]</code>
-        </pre>
+    <section class="slide" id="-screen">
+        <h2>Спецификация CSS Syntax</h2>
+        <img src="./access/css_syntax.png" alt="" style="margin-top: 195px; max-height: none;" class="cover">
     </section>
 
     <section class="slide">
         <pre lang="bnf">
             <code>&lt;style-rule> ::=</code>
-            <code>  &lt;selectors-list> {</code>
-            <code>    &lt;properties-list></code>
-            <code>  }</code>
+            <code>  &lt;selectors-list> { &lt;properties-list> }</code>
             <code>&lt;selectors-list> ::=</code>
             <code>  &lt;selector>[':' &lt;pseudo-class>] ['::' &lt;pseudo-element>]</code>
             <code>  [',' &lt;selectors-list>]</code>
             <code>&lt;properties-list> ::=</code>
-            <code>  [&lt;property> ':' <span class="no-term">&lt;value></span>] [';' &lt;properties-list>]</code>
+            <code>  [&lt;property> ':' <span class="next next-light code">&lt;value></span>] [';' &lt;properties-list>]</code>
         </pre>
-        <div style="left: 562px;position: absolute;top: 391px;">
-            <div class="no-term ">Данные</div>
-        </div>
     </section>
 
     <section class="slide">
-        <h2>Немного формальной грамматики</h2>
+        <h2 class="cover shrink" style="text-align: center; font-size: 60px">Немного формальной грамматики</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Простой пример</h2>
+        <p>Попробуем описать грамматику отрицательных чисел от -1 до -9:</p>
+        <pre lang="bnf">
+            <code><span class="next next-light code">&lt;neg_num></span> ::= "-" &lt;num></code>
+            <code>&lt;num> ::= "1" | "2" | "3" | "4" | "5" |</code>
+            <code>      | "6" | "7" | "8" | "9"</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Простой пример</h2>
+        <p>Попробуем описать грамматику отрицательных чисел от -1 до -9:</p>
+        <pre lang="bnf">
+            <code>&lt;neg_num> ::= "-" <span class=" code">&lt;num></span></code>
+            <code><span class=" code">&lt;num></span> ::= "1" | "2" | "3" | "4" | "5" |</code>
+            <code>      | "6" | "7" | "8" | "9"</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Простой пример</h2>
         <p>Попробуем описать грамматику отрицательных чисел от -1 до -9:</p>
         <pre lang="bnf">
             <code>&lt;neg_num> ::= "-" &lt;num></code>
             <code>&lt;num> ::= "1" | "2" | "3" | "4" | "5" |</code>
             <code>      | "6" | "7" | "8" | "9"</code>
         </pre>
-        <div class="next">
+        <div>
             <p>Сложение отрицательных чисел:</p>
             <pre lang="bnf">
                 <code>&lt;add_expr> ::= &lt;neg_num> "+" "(" &lt;neg_num> ")"</code>
@@ -107,7 +130,7 @@
     </section>
 
     <section class="slide">
-        <h2>Немного формальной грамматики</h2>
+        <h2>Простой пример</h2>
         <p>Попробуем описать грамматику отрицательных чисел от -1 до -9:</p>
         <pre lang="bnf">
             <code>&lt;neg_num> ::= <span class="no-term">"-"</span> &lt;num></code>
@@ -117,14 +140,14 @@
         <div>
             <p>Сложение отрицательных чисел:</p>
             <pre lang="bnf">
-                <code>&lt;add_expr> ::= &lt;neg_num> <span class="no-term">"+" "(" </span>&lt;neg_num> <span class="no-term">")"</span></code>
+                <code>&lt;add_expr> ::= &lt;neg_num> <span class="no-term">"+" "("</span> &lt;neg_num> <span class="no-term">")"</span></code>
                 <code class="no-code"></code>
             </pre>
         </div>
     </section>
 
     <section class="slide">
-        <h2>Немного формальной грамматики</h2>
+        <h2>Простой пример</h2>
         <p>Попробуем описать грамматику отрицательных чисел от -1 до -9:</p>
         <pre lang="bnf">
             <code><span class="term">&lt;neg_num></span> ::= <span class="no-term">"-"</span> <span class="term">&lt;num></span></code>
@@ -139,34 +162,25 @@
             </pre>
         </div>
         <div style="left: 800px;position: absolute;top: 250px;">
-            <div class="term next">Терминалы</div>
-            <div class="no-term next" >Нетерминалы</div>
+            <div class="no-term next">Терминалы</div>
+            <div class="term next" >Нетерминалы</div>
         </div>
     </section>
-
-<!--    <section class="slide">-->
-<!--        <h2>Немного формальной грамматики</h2>-->
-<!--        Для удобного описания языка нужны:-->
-<!--        <ol>-->
-<!--            <li><b>Нетерминалы</b> - содержит символы конечного алфавита</li>-->
-<!--            <li><b>Терминалы</b> - обозначает какую-то сущность языка</li>-->
-<!--        </ol>-->
-<!--    </section>-->
 
     <section class="slide">
         <h2>Форма Бэкуса-Наура</h2>
         <table>
             <tr>
                 <td>"text" или 'text'</td>
-                <td>нетерминал</td>
-            </tr>
-            <tr>
-                <td><b>&lt;A></b></td>
                 <td>терминал</td>
             </tr>
             <tr>
+                <td><b>&lt;A></b></td>
+                <td>нетерминал</td>
+            </tr>
+            <tr>
                 <td><b>&lt;A></b> ::= <b>&lt;B></b>  </td>
-                <td><b>&lt;A></b> эквивалентно <b>&lt;B></b></td>
+                <td><b>&lt;A></b> заменимо на  <b>&lt;B></b></td>
             </tr>
             <tr>
                 <td><b>&lt;A></b>  <b>&lt;B></b></td>
@@ -179,7 +193,7 @@
 
             <tr>
                 <td><b>integer</b></td>
-                <td>имя классса нетерминалов, описывается не через BNF</td>
+                <td>имя класса нетерминалов, описывается не через BNF</td>
             </tr>
         </table>
     </section>
@@ -194,44 +208,101 @@
             <code>    | integer '/' &lt;mul_expr></code>
             <code>    | integer '%' &lt;mul_expr></code>
             <code>    | integer</code>
-            <code>integer ::= [0-9]+</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <pre syntax="bnf">
-            <code>&lt;add_expr> ::= &lt;mul_expr> '+' &lt;add_expr></code>
-            <code>    | &lt;mul_expr> '-' &lt;add_expr></code>
-            <code>    | &lt;mul_expr></code>
-        </pre>
-        =>
-        <pre syntax="bnf">
-            <code>&lt;add_expr> ::= &lt;mul_expr> [ ('+' | '-') &lt;add_expr> ]</code>
-            <code style="display: none"></code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <pre syntax="bnf">
-            <code>&lt;mul_expr> ::= integer '*' &lt;mul_expr></code>
-            <code>    | integer '/' &lt;mul_expr></code>
-            <code>    | integer '%' &lt;mul_expr></code>
-            <code>    | integer</code>
-        </pre>
-        =>
-        <pre syntax="bnf">
-            <code>&lt;mul_expr> ::= integer [ ('*' | '/' | '%') &lt;mul_expr> ]</code>
-            <code style="display: none"></code>
+            <code><span class="code">integer ::= [0-9]+</span>      <- класс нетерминалов</code>
         </pre>
     </section>
 
     <section class="slide">
         <pre syntax="bnf">
             <code>&lt;expression> ::= &lt;add_expr></code>
-            <code>&lt;add_expr> ::= &lt;mul_expr> [ ('+' | '-') &lt;add_expr> ]</code>
-            <code>&lt;mul_expr> ::= integer [ ('*' | '/' | '%') &lt;mul_expr> ]</code>
+            <code>&lt;add_expr> ::= &lt;mul_expr> '+' &lt;add_expr></code>
+            <code>    | &lt;mul_expr> '-' &lt;add_expr></code>
+            <code>    | &lt;mul_expr></code>
+            <code>&lt;mul_expr> ::= integer '*' &lt;mul_expr></code>
+            <code>    | integer '/' &lt;mul_expr></code>
+            <code>    | integer '%' &lt;mul_expr></code>
+            <code>    | integer</code>
             <code>integer ::= [0-9]+</code>
         </pre>
+    </section>
+
+    <section class="slide">
+        <pre syntax="bnf">
+            <code>&lt;expression> ::= &lt;add_expr></code>
+            <code>&lt;add_expr> ::= <span class="code">&lt;mul_expr></span> '+' &lt;add_expr></code>
+            <code>    | <span  class="code">&lt;mul_expr></span> '-' &lt;add_expr></code>
+            <code>    | <span class="code">&lt;mul_expr></span></code>
+            <code>&lt;mul_expr> ::= integer '*' &lt;mul_expr></code>
+            <code>    | integer '/' &lt;mul_expr></code>
+            <code>    | integer '%' &lt;mul_expr></code>
+            <code>    | integer</code>
+            <code>integer ::= [0-9]+</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre syntax="bnf">
+            <code>&lt;expression> ::= &lt;add_expr></code>
+            <code>&lt;add_expr> ::= <span class="code">&lt;mul_expr></span> '+' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span  class="code">&lt;mul_expr></span> '-' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span class="code">&lt;mul_expr></span></code>
+            <code>&lt;mul_expr> ::= integer '*' &lt;mul_expr></code>
+            <code>    | integer '/' &lt;mul_expr></code>
+            <code>    | integer '%' &lt;mul_expr></code>
+            <code>    | integer</code>
+            <code>integer ::= [0-9]+</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre syntax="bnf">
+            <code>&lt;expression> ::= &lt;add_expr></code>
+            <code>&lt;add_expr> ::= <span class="code">&lt;mul_expr></span> '+' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span  class="code">&lt;mul_expr></span> '-' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span class="code">&lt;mul_expr></span></code>
+            <code>&lt;mul_expr> ::= <span class="light_two">integer</span> '*' &lt;mul_expr></code>
+            <code>    | <span class="light_two">integer</span> '/' &lt;mul_expr></code>
+            <code>    | <span class="light_two">integer</span> '%' &lt;mul_expr></code>
+            <code>    | <span class="light_two">integer</span></code>
+            <code>integer ::= [0-9]+</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre syntax="bnf">
+            <code>&lt;expression> ::= &lt;add_expr></code>
+            <code>&lt;add_expr> ::= <span class="code">&lt;mul_expr></span> '+' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span  class="code">&lt;mul_expr></span> '-' <span class="no-term">&lt;add_expr></span></code>
+            <code>    | <span class="code">&lt;mul_expr></span></code>
+            <code>&lt;mul_expr> ::= <span class="light_two">integer</span> '*' <span class="light_three">&lt;mul_expr></span></code>
+            <code>    | <span class="light_two">integer</span> '/' <span class="light_three">&lt;mul_expr></span></code>
+            <code>    | <span class="light_two">integer</span> '%' <span class="light_three">&lt;mul_expr></span></code>
+            <code>    | <span class="light_two">integer</span></code>
+            <code>integer ::= [0-9]+</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre syntax="bnf">
+            <code>&lt;expression> ::= &lt;add_expr></code>
+            <code>&lt;add_expr> ::= <span class="term">&lt;mul_expr> [ ('+' | '-') &lt;add_expr> ]</span></code>
+            <code>&lt;mul_expr> ::= <span class="no-term">integer [ ('*' | '/' | '%') &lt;mul_expr> ]</span></code>
+            <code>integer ::= [0-9]+</code>
+        </pre>
+
+        <div class="columns two " style="font-size: 17px; margin-top: 50px">
+            <pre syntax="bnf" class="term">
+                <code class="">&lt;mul_expr> ::= integer '*' &lt;mul_expr></code>
+                <code class="">    | integer '/' &lt;mul_expr></code>
+                <code class="">    | integer '%' &lt;mul_expr></code>
+                <code class="">    | integer</code>
+            </pre>
+            <pre syntax="bnf" class="no-term">
+                <code class="">&lt;add_expr> ::= &lt;mul_expr> '+' &lt;add_expr></code>
+                <code class="">    | &lt;mul_expr> '-' &lt;add_expr></code>
+                <code class="">    | &lt;mul_expr></code>
+            </pre>
+        </div>
     </section>
 
     <section class="slide">
@@ -247,7 +318,7 @@
             </tr>
             <tr>
                 <td><b>{&lt;A>}</b></td>
-                <td>повторние элемента (0 или более раз)</td>
+                <td>повторение элемента (0 или более раз)</td>
             </tr>
         </table>
     </section>
@@ -255,9 +326,7 @@
     <section class="slide">
         <pre>
             <code>&lt;style-rule> ::=</code>
-            <code>  &lt;selectors-list> {</code>
-            <code>    &lt;properties-list></code>
-            <code>  }</code>
+            <code>  &lt;selectors-list> '{' &lt;properties-list> '}'</code>
             <code>&lt;selectors-list> ::=</code>
             <code>  &lt;selector>[':' &lt;pseudo-class>] ['::' &lt;pseudo-element>]</code>
             <code>  [',' &lt;selectors-list>]</code>
@@ -267,10 +336,143 @@
     </section>
 
     <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;style-rule> ::=</code>
+            <code>  &lt;selectors-list> '{' &lt;properties-list> '}'</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    height: initial;</code>
+            <code>    width: 100%;</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;style-rule> ::=</code>
+            <code>  <span class="light_one">&lt;selectors-list></span> '{' &lt;properties-list> '}'</code>
+        </pre>
+
+        <pre lang="css">
+            <code><span class="light_one">.class#id</span> }</code>
+            <code>    height: initial;</code>
+            <code>    width: 100%;</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;style-rule> ::=</code>
+            <code>  <span class="light_one">&lt;selectors-list></span> <span class="light_zero">'{'</span> &lt;properties-list> <span class="light_zero">'}'</span></code>
+        </pre>
+
+        <pre lang="css">
+            <code><span class="light_one">.class#id</span> <span class="light_zero">{</span> </code>
+            <code>    height: initial;</code>
+            <code>    width: 100%;</code>
+            <code><span class="light_zero">}</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;style-rule> ::=</code>
+            <code>  <span class="light_one">&lt;selectors-list></span> <span class="light_zero">'{'</span> <span class="light_two">&lt;properties-list></span> <span class="light_zero">'}'</span></code>
+        </pre>
+
+        <pre lang="css">
+            <code><span class="light_one">.class#id</span> <span class="light_zero">{</span> </code>
+            <code>    <span class="light_two">height: initial;</span></code>
+            <code>    <span class="light_two">width: 100%;</span></code>
+            <code><span class="light_zero">}</span></code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [&lt;property> ':' &lt;value>] [';' &lt;properties-list>]</code>
+        </pre>
+
+        <pre lang="css" class="next">
+            <code>.class#id {}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [&lt;property> ':' &lt;value>] [';' &lt;properties-list>]</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    height: initial</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [<span class="light_one">&lt;property></span> ':' &lt;value>] [';' &lt;properties-list>]</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    <span class="light_one">height</span>: initial</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [<span class="light_one">&lt;property></span> <span class="light_zero">':'</span> &lt;value>] [';' &lt;properties-list>]</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    <span class="light_one">height</span><span class="light_zero">:</span> initial</code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [<span class="light_one">&lt;property></span> <span class="light_zero">':'</span> <span class="light_two">&lt;value></span>] [';' &lt;properties-list>]</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    <span class="light_one">height</span><span class="light_zero">:</span> <span class="light_two">initial</span></code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="bnf">
+            <code>&lt;properties-list> ::=</code>
+            <code>  [<span class="light_one">&lt;property></span> <span class="light_zero">':'</span> <span class="light_two">&lt;value></span>] [<span class="light_three">';' &lt;properties-list></span>]</code>
+        </pre>
+
+        <pre lang="css">
+            <code>.class#id { </code>
+            <code>    <span class="light_one">height</span><span class="light_zero">:</span> <span class="light_two">initial</span><span class="light_three">;</span></code>
+            <code>    <span class="light_three">width: 100%</span></code>
+            <code>}</code>
+        </pre>
+    </section>
+
+    <section class="slide">
         <pre lang="css">
             <code>.class { </code>
-            <code>    heigth: initial;</code>
-            <code>    widht: 100%;</code>
+            <code>    height: initial;</code>
+            <code>    width: 100%;</code>
             <code>    border-width: 2px medium 4px;</code>
             <code>    box-shadow: rgba(0,0,0,0.4) 10px 10px inset;</code>
             <code>    margin: 0 -7px 0 2px;</code>
@@ -283,34 +485,41 @@
         <pre lang="css">
             <code>margin: 0 -7px 0 2px;</code>
         </pre>
-
-            <code>0 -7px 0 2px;</code> - 4 токена <code>&lt;lenght></code></p>
-        <pre lang="bnf">
+        <div class="next">
+            <code>0   -7px   0   2px</code> - 4 токена <code>&lt;length></code>
+        </div>
+        <pre lang="bnf" class="next">
             <code>&lt;margin> ::= "auto"</code>
-            <code>   | &lt;lenght> </code>
-            <code>   | &lt;lenght> {" "} &lt;lenght></code>
-            <code>   | &lt;lenght> {" "} &lt;lenght> {" "} &lt;lenght></code>
-            <code>   | &lt;lenght> {" "} &lt;lenght> {" "} &lt;lenght> {" "} &lt;lenght></code>
+            <code>   | &lt;length> </code>
+            <code>   | &lt;length> {" "} &lt;length></code>
+            <code>   | &lt;length> {" "} &lt;length> {" "} &lt;length></code>
+            <code>   | &lt;length> {" "} &lt;length> {" "} &lt;length> {" "} &lt;length></code>
         </pre>
     </section>
 
     <section class="slide">
         <h2>Value Definition Syntax</h2>
         <ol>
-            <li value="1">ключевые слова, которые записываются буквально, без кавычек</li>
-            <pre lang="vds">
-                 <code>initial</code>
-            </pre>
+            <li value="1">ключевые слова, которые записываются буквально, без кавычек
+                <pre lang="vds">
+                    <code>initial</code>
+                </pre>
+            </li>
 
-            <li value="2">базовые типы данных, которые отображаются между '<' и '>'</li>
-            <pre lang="vds">
-                 <code> &lt;length></code>
-            </pre>
 
-            <li value="3">типы, которые именуются по свойству</li>
-            <pre lang="vds">
-                 <code> &lt;'background-attachment'></code>
-            </pre>
+            <li value="2">базовые типы данных, которые отображаются между '<' и '>'
+                <pre lang="vds">
+                    <code> &lt;length></code>
+                </pre>
+            </li>
+
+
+            <li value="3">сложные типы, которые именуются по свойству
+                <pre lang="vds">
+                    <code> &lt;'background-attachment'></code>
+                </pre>
+            </li>
+
         </ol>
     </section>
 
@@ -369,365 +578,489 @@
     </section>
 
     <section class="slide">
-        <h2>Текстовые типы данных</h2>
+        <h2 class="cover shrink" style="text-align: center; font-size: 60px">Посмотрим на проблему еще раз</h2>
+    </section>
+
+    <section class="slide">
+        <h2>Посмотрим на проблему еще раз</h2>
+        <p>CSS иногда работает не так, как я ожидаю</p>
+        <pre lang="css">
+            <code class=" bad">height: calc(3px+4px)</code>
+            <code class=" ">height: calc(3px - 4px)       <span class="">// => 0px</span></code>
+            <code class="bad ">height: calc(25% - 0)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <img src="./access/calc_syntax.png" alt="" class="cover ">
+        <div class="next term" style="height: 65px; position: absolute; top: 60%; left: 40px; right: 60px"></div>
+    </section>
+
+    <section class="slide">
+        <h2>Вокруг + и - должны быть пробелы</h2>
+        <pre lang="css">
+            <code>calc(50%-2em);</code>
+        </pre>
+
+        <pre lang="css">
+            <code class="next bad">calc(50% - 2em);</code>
+            <code class="next bad">calc(50% -2em);</code>
+            <code class="next good">calc(50% - -2em);</code>
+            <code class="next good">calc(50% - (-2em));</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Посмотрим на проблему еще раз</h2>
+        <p>CSS иногда работает не так, как я ожидаю</p>
+        <pre lang="css">
+            <code class=" bad crossed-out">height: calc(3px+4px)</code>
+            <code class=" ">height: calc(3px - 4px)       <span class="">// => 0px</span></code>
+            <code class="bad ">height: calc(25% - 0)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Calc(). Type Checking.</h2>
         <ol>
-            <li>Pre-defined Keywords</li>
-            <li>Author-defined Identifiers</li>
-            <li>Quoted Strings: the < string > type</li>
-            <li>Resource Locators: the < url > type</li>
+            <li class="">Нельзя использовать в одном выражении &lt;length> и &lt;time></li>
+            <li class="next">Нельзя использовать в одном выражении &lt;angle> и &lt;length></li>
+            <li class="next">Нельзя складывать или вычитать &lt;length> и &lt;number-token></li>
+            <li class="next">...</li>
+            <li class="next">...</li>
         </ol>
     </section>
 
     <section class="slide">
-        <h2>Pre-defined Keywords</h2>
-        <p>
-            Пишутся буквально, без кавычек.<br>
-            Интерпретируются в ASCII без учета регистра
-        </p>
-        <div class="columns two">
+        <h2>Calc(). Type Checking.</h2>
+        <p class="">Нельзя использовать в одном выражении несовместимые типы</p>
         <pre lang="css">
-            <code>.class { </code>
-            <code>    heigth: initial;</code>
-            <code>}</code>
+            <code class="bad next">calc(5px + 10s)</code>
+            <code class="bad next">calc(5deg / 5em)</code>
+            <code class="bad next">calc(5px - 5)</code>
+            <code class="bad next">calc(5px - 0)</code>
         </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Посмотрим на проблему еще раз</h2>
+        <p>CSS иногда работает не так, как я ожидаю</p>
         <pre lang="css">
-            <code>.class { </code>
-            <code>    heigth: INITIAL;</code>
-            <code>}</code>
+            <code class="bad crossed-out">height: calc(3px+4px)</code>
+            <code class=" ">height: calc(3px - 4px)       <span class="">// => 0px</span></code>
+            <code class="bad crossed-out">height: calc(25% - 0)</code>
         </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Похожая проблема</h2>
+        <pre lang="css">
+            <code><span class="crossed-out">height: -12px</span>   </code>
+            <code class="">height: calc(-12px)  // => 0px</code>
+        </pre>
+
+        <p class="next">Проверка соответствия значения свойства его грамматике</p>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Type Checking</h2>
+        <p>Проверка соответствия значения свойства его грамматике</p>
+        <img src="./access/css_height.png" style="margin-top: 268px; max-height: none;" class="cover">
+    </section>
+
+    <section class="slide">
+        <h2>CSS Type Checking</h2>
+        <p>Проверка соответствия значения свойства его грамматике</p>
+        <img src="./access/css_height_2.png" style="margin-top: 86px; max-height: none;" class="cover">
+
+        <div class="next term" style="height: 40px; position: absolute; top: 56%; left: 90px; width: 325px"></div>
+    </section>
+
+<!--    <section class="slide">-->
+<!--        <h2>CSS Type Checking</h2>-->
+<!--        <p>Проверка соответствия значения свойства его грамматике</p>-->
+
+<!--        <div  class="">-->
+<!--            Грамматика свойства:-->
+<!--            <pre lang="vds">-->
+<!--                <code>height : &lt;length> | auto</code>-->
+<!--                <code style="display: none"></code>-->
+<!--            </pre>-->
+<!--            <p class="">* Negative values for 'height' are illegal.</p>-->
+<!--        </div>-->
+<!--    </section>-->
+
+    <section class="slide">
+        <h2>CSS Type Checking</h2>
+        <pre lang="css" class="">
+            <code><span class="crossed-out">height: -12px</span>        // => auto</code>
+            <code class="">height: calc(-12px)  // => 0px</code>
+        </pre>
+        <p class="next">Проводится перед каскадом</p>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Type Checking</h2>
+        <pre lang="css" class="">
+            <code><span class="crossed-out">height: -12px</span>        // => auto</code>
+            <code class="">height: calc(-12px)  // => 0px</code>
+        </pre>
+
+        <pre lang="css" class="">
+            <code><span class="crossed-out">height: -12s</span>         // => auto</code>
+            <code class=""><span class="crossed-out">height: calc(-12s)</span>   // => auto</code>
+        </pre>
+
+        <p class="next">Проверка финального типа<span class="next">, но не диапазона</span></p>
+    </section>
+
+    <section class="slide">
+        <h2>Calc(). Range Checking.</h2>
+        <pre lang="css">
+            <code>height: calc(-12px);</code>
+            <code>    // => 0px при обращении </code>
+        </pre>
+
+    </section>
+
+    <section class="slide">
+        <h2>Calc(). Range Checking.</h2>
+        <pre lang="css">
+            <code>height: calc(-12px);</code>
+            <code>    // => 0px при обращении </code>
+        </pre>
+        <div class="">
+            <p>Разные ситуации:</p>
+            <div class="columns two">
+                <pre lang="css" class="next next-light false">
+                    <code>height: -12px;</code>
+                    <code>    // property syntax check</code>
+                </pre>
+                <pre lang="css" class="next next-light true">
+                    <code>height: calc(-12px);</code>
+                    <code class="no-lang">    // calc range check</code>
+                </pre>
+            </div>
         </div>
     </section>
 
+    <section class="slide">
+        <h2>Calc(). Range Checking.</h2>
+        <div class="block">
+            <pre lang="css">
+                <code>height: 100px;<span class="next"> // => 100px</span></code>
+            </pre>
+            <div class="block">
+                <pre lang="css">
+                    <code>height: 50%;<span class="next"> // => 50px </span></code>
+                </pre>
+                <div class="block">
+                    <pre lang="css">
+                        <code>height: inherit;<span class="next"> // 25px</span> </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="slide">
-        <h2>Pre-defined Keywords</h2>
-        <ol>
-            <li value="1"><strong>CSS-wide keywords</strong> - набор значений, общих для всех css-свойств.</li>
-        </ol>
+        <h2>Calc(). Range Checking.</h2>
+        <div class="block">
+            <pre lang="css">
+                <code>height: 100px;<span class="next"> // => 100px</span></code>
+            </pre>
+            <div class="block">
+                <pre lang="css">
+                    <code>height: calc(50% - 25px);<span class="next"> // => 25px </span></code>
+                </pre>
+                <div class="block">
+                    <pre lang="css">
+                        <code>height: inherit;<span class="next"> // => calc(50% - 25px) => 0px </span> </code>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>Посмотрим на проблему еще раз</h2>
+        <p>CSS иногда работает не так, как я ожидаю</p>
         <pre lang="css">
-            <code>.class { </code>
-            <code>    heigth: initial;</code>
-            <code>    widht: unset;</code>
-            <code>    margin: inherit;</code>
+            <code class="bad crossed-out">height: calc(3px+4px)</code>
+            <code class="crossed-out ">height: calc(3px - 4px)       <span class="">// => 0px</span></code>
+            <code class="bad crossed-out">height: calc(25% - 0)</code>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <h2>Итого:</h2>
+        <ol>
+            <li class="next">В CSS есть проверка синтаксиса и типов
+                <ol class="">
+                    <li class="next">Невалидный синтаксис => значение выше из каскада</li>
+                    <li class="next">Не подходит тип => значение выше из каскада</li>
+                </ol>
+            </li>
+
+            <li class="next">Если используется calc(), то есть проверка синтаксиса, типов и диапазона
+                <ol class="">
+                    <li class="next">Невалидный синтаксис => значение выше из каскада</li>
+                    <li class="next">Не подходит тип => значение выше из каскада</li>
+                    <li class="next">Не подходит диапазон => значение приводится</li>
+                </ol>
+            </li>
+        </ol>
+    </section>
+
+    <section class="slide">
+        <h2 class="cover shrink" style="text-align: center; font-size: 60px">Взгляд в будущее</h2>
+    </section>
+
+    <section class="slide">
+        <pre lang="css" class="">
+            <code>#el {</code>
+            <code>  background-color: red;</code>
+            <code>  animation: anim infinite 3s;</code>
+            <code>}</code>
+            <code>@keyframes anim {</code>
+            <code>  50% { background-color: blue; }</code>
             <code>}</code>
         </pre>
+
+        <div id="el1" style="position: absolute; top: 90px; right: 200px"></div>
+
+        <style>
+            #el1 {
+                height: 360px;
+                width: 200px;
+                border-radius: 10px;
+            }
+            #el1 {
+                background: red;
+                animation: anim infinite 3s;
+            }
+            @keyframes anim {
+                50% {
+                    background-color: blue;
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <h2>Pre-defined Keywords</h2>
-        <ol>
-            <li value="2"><strong>Property-specific keyword</strong> - набор значений, определенных для конкретного свойства.</li>
-        </ol>
-        <pre lang="css">
-            <code>.class { </code>
-            <code>    text-align: center; </code>
-            <code>    border-style: solid; </code>
-            <code>} </code>
+        <pre lang="css" class="">
+            <code>#el {</code>
+            <code>  --color-stop: red;</code>
+            <code>  background: var(--color-stop);</code>
+            <code>  animation: anim infinite 3s;</code>
+            <code>}</code>
+            <code>@keyframes anim {</code>
+            <code>  50% { --color-stop: blue; }</code>
+            <code>}</code>
         </pre>
+
+        <div id="el2" style="position: absolute; top: 90px; right: 200px"></div>
+
+        <style>
+            #el2 {
+                height: 360px;
+                width: 200px;
+                border-radius: 10px;
+            }
+            #el2 {
+                --color-sto: red;
+                background: var(--color-sto);
+                animation: anim infinite 3s;
+            }
+            @keyframes anim {
+                50% {
+                    --color-sto: blue;
+                }
+            }
+        </style>
     </section>
 
     <section class="slide">
-        <p>В спецификации это выглядит так:</p>
-        <pre lang="vds">
-            <code>text-align: center | justify | left | right | start | end</code>
-            <code style="display: none"></code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Author-defined Identifiers</h2>
-        <p>Любой допустимый идентификатор CSS, который не будет неверно истолкован как pre-defined keyword в определении значения этого свойства.</p>
-    </section>
-
-    <section class="slide">
-        <pre lang="css">
+        <h2>Почему?</h2>
+        <p class="next">Потому что изначально css переменные не типизированы</p>
+        <pre lang="css" class="next">
             <code>div {</code>
-            <code>  counter-reset: h1-counter 10;</code>
+            <code>  --name: red;</code>
+            <code class="next">  --name: 11px;</code>
+            <div class="next">
+                <code >  --name: calc(14deg * 3);</code>
+                <code>}</code>
+            </div>
+        </pre>
+    </section>
+
+    <section class="slide">
+        <pre lang="css" class="">
+            <code>#el {</code>
+            <code>  --color-stop: red;</code>
+            <code>  margin: 50px;</code>
+            <code>  animation: anim infinite 3s;</code>
             <code>}</code>
-            <code>h1 {</code>
-            <code>  counter-increment: h1-counter;</code>
-            <code>}</code>
-            <code>h1::before {</code>
-            <code>  content: counter(h1-counter);</code>
+            <code>@keyframes anim {</code>
+            <code>  50% { --color-stop: 10px;</code>
+            <code>       margin: var(--color-stop); }</code>
             <code>}</code>
         </pre>
     </section>
 
     <section class="slide">
-        <pre lang="css">
-            <code>h1 {</code>
-            <code>  animation: colorChange 3s infinite alternate;</code>
-            <code>}</code>
-            <code>@keyframes colorChange {</code>
-            <code>  from { color: blue; }</code>
-            <code>  to { color: green; }</code>
-            <code>}</code>
+        <h2>Почему?</h2>
+        <p class="">Браузер не знает, как построить переход от одного значения к другому</p>
+        <pre lang="css" class="next">
+            <code>red  =>  ???  =>  blue</code>
+            <code class="next">red  =>  ???  =>  10px</code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2>Quoted Strings: the &lt;string> type</h2>
-        <p>Последовательность символов, выделенных двойными или одинарными кавычками.</p>
-        <pre lang="css">
-            <code>div::before {</code>
-            <code>  content: "ololo";</code>
-            <code>}</code>
+        <h2>Типизация переменной</h2>
+        <pre>
+            <code><span style="color:#9876aa;font-weight:bold;font-style:italic;">CSS</span>.registerProperty({</code>
+            <code><span style="color:#9876aa;">  name</span>: <span style="color:#6a8759;">'--color-stop'</span><span style="color:#cc7832;">,</span></code>
+            <code><span style="color:#cc7832;">  </span><span style="color:#9876aa;">syntax</span>: <span style="color:#6a8759;">'&lt;color&gt;'</span><span style="color:#cc7832;">,</span></code>
+            <code><span style="color:#cc7832;">  </span><span style="color:#9876aa;">inherits</span>: <span style="color:#cc7832;">false,</span></code>
+            <code><span style="color:#cc7832;">  </span><span style="color:#9876aa;">initialValue</span>: <span style="color:#6a8759;">'transparent'</span></code>
+            <code>})</code>
         </pre>
     </section>
 
     <section class="slide">
-        <h2>Resource Locators: the &lt;url> type</h2>
-        <pre lang="css">
-            <code>body {</code>
-            <code>  background-image: url("assets/image.jpeg"); </code>
+        <pre lang="css" class="">
+            <code>#el {</code>
+            <code>  --color-stop: red;</code>
+            <code>  background: var(--color-stop);</code>
+            <code>  animation: anim infinite 3s;</code>
             <code>}</code>
-            <code>.blurry {</code>
-            <code>  filter: url("#blurFilter");</code>
+            <code>@keyframes anim {</code>
+            <code>  50% { --color-stop: blue; }</code>
             <code>}</code>
+        </pre>
+
+        <div id="el" style="position: absolute; top: 90px; right: 200px"></div>
+
+        <style>
+            #el {
+                height: 360px;
+                width: 200px;
+                border-radius: 10px;
+            }
+            #el {
+                --color-stop: red;
+                background: var(--color-stop);
+                animation: anim infinite 3s;
+            }
+            @keyframes anim {
+                50% {
+                    --color-stop: blue;
+                }
+            }
+        </style>
+
+        <script>
+            CSS.registerProperty({
+                name: '--color-stop',
+                syntax: '<color>',
+                inherits: false,
+                initialValue: 'transparent'
+            })
+        </script>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Typed OM</h2>
+        <img src="./access/speck_typed_om.png" style="margin-top: 220px; max-height: none;" class="cover">
+    </section>
+
+    <section class="slide">
+        <div class="cover" style="display: flex; align-items: center; flex-direction: column; font-size: 60px; width: 100%">
+            <div class=""> JS =></div>
+            <div class=" next"> elem.style.height = "1px" </div>
+            <div class=""> => CSS</div>
+        </div>
+    </section>
+
+    <section class="slide">
+        <h2>CSS Typed OM</h2>
+        <pre lang="js" class="">
+            <code class="next">const height = CSS.px(2);</code>
+            <code class="next">elem.attributeStyleMap.set("height", height);</code>
+            <div class="next">
+                <code class=""> </code>
+                <code class="">elem.attributeStyleMap.get("height"); // => </code>
+                <code class="">  // CSSUnitValue {value: 2, unit: "px"} </code>
+            </div>
         </pre>
     </section>
 
     <section class="slide">
-        <h2>Числовые типы данных</h2>
+        <h2>CSS Typed OM</h2>
         <ol>
-            <li>Integers: the &lt;integer> type</li>
-            <li>Real Numbers: the &lt;number> type</li>
-            <li>Numbers with Units: dimension values</li>
+            <li class="next">Лёгкое и наглядное взаимодействие c CSS OM </li>
+            <li class="next">Иcпользование Value Definition Syntax</li>
+            <li class="next">Очень гибкая типизация переменных</li>
+            <li class="next">Можно посмотреть внутрь CSS</li>
         </ol>
     </section>
 
-    <section class="slide">
-        <h2>Integers: the &lt;integer> type</h2>
-        <pre lang="vds">
-            <code>+? -? &lt;digit>+ </code>
-            <code style="display: none"></code>
-        </pre>
-        <p><b>&lt;digit></b> - a code point between U+0030 (0) and U+0039 (9) inclusive.
-            <br>Например:</p>
-        <pre lang="css">
-            <code>.class {</code>
-            <code>  margin: -3px;</code>
-            <code>}</code>
-        </pre>
-    </section>
 
-    <section class="slide">
-        <h2>Real Numbers: the &lt;number> type</h2>
-        <pre lang="vds">
-            <code>+? -? &lt;digit>* . &lt;digit>+</code>
-            <code style="display: none"></code>
-        </pre>
-        <p>Например:</p>
-        <pre lang="css">
-            <code>.class {</code>
-            <code>  margin: -.3px;</code>
-            <code>}</code>
-        </pre>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2 class="cover shrink" style="text-align: center; font-size: 60px">типы и производительность</h2>-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h2>Numbers with Units: dimension values</h2>
-        <p>Число, за которым сразу следует идентификатор единицы измерения.</p>
-        <pre lang="vds">
-            <code>+? -? &lt;digit>* .? &lt;digit>+ &lt;length></code>
-            <code style="display: none"></code>
-        </pre>
-        <p>Например:</p>
-        <pre lang="css">
-            <code>.class {</code>
-            <code>  margin: -3px;</code>
-            <code>}</code>
-        </pre>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>Performance</h2>-->
+    <!--        <p>TODO: много лоадеров на фоне</p>-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h2>Distance Units: the &lt;length> type</h2>
-        <ol>
-            <li>Relative Lengths</li>
-            <p>em, ex, rem, %, vm, vmin ...</p>
-            <li>Absolute Lengths</li>
-            <p>cm, px, pc, mm, Q ...</p>
-        </ol>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>Performance</h2>-->
+    <!--        <pre lang="css">-->
+    <!--            <code>@keyframes loader {</code>-->
+    <!--            <code>  0% { top: 10px; }</code>-->
+    <!--            <code>  100% {top: 100px; }</code>-->
+    <!--            <code>}</code>-->
+    <!--        </pre>-->
+    <!--        <p>TODO: подсветка синтаксиса</p>-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h2>Functional Notations</h2>
-        <pre lang="css">
-            <code>.class {</code>
-            <code>  background: url("http://www.example.org/image");</code>
-            <code>  color: rgb(100, 200, 50 );</code>
-            <code>  content: counter(list-item) ". ";</code>
-            <code>  width: calc(50% - 2em);</code>
-            <code>}</code>
-        </pre>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>top: 10px;</h2>-->
+    <!--        <img src="./access/calc_px.png" alt="">-->
+    <!--        @TODO: нормально померить по времени-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h2>Calc(). Syntax.</h2>
-        <pre lang="css">
-            <code>calc(50% - 2em);</code>
-        </pre>
-        <p class="next">(выражение) => (значение свойства CSS)</p>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>top: 10%;</h2>-->
+    <!--        <img src="./access/calc_%.png" alt="">-->
+    <!--        @TODO: нормально померить по времени-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h3>1. Скобки обязательны</h3>
-        <pre lang="css">
-            <code>calc(50% - 2em);</code>
-        </pre>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>top: calc(10px);</h2>-->
+    <!--        <img src="./access/calc_calc.png" alt="">-->
+    <!--        @TODO: нормально померить по времени-->
+    <!--    </section>-->
 
-    <section class="slide">
-        <h3>2. Вложенные скобки тоже поддерживаются</h3>
-        <pre lang="css">
-            <code>calc(((100% - (200px * 4 + 10px * 6)) / 6) * 2 + 200px);</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h3>3. Вокруг + и - должны быть пробелы</h3>
-        <pre lang="css">
-            <code>calc(50% - 2em);</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Computed Value.</h2>
-        <p>Если выражение содержит только числа, но вычисляется при парсинге</p>
-        <pre lang="css" class="next">
-            <code>calc(1 + 2.5)</code>
-            <code class="next">   // => 3.5 после парсинга</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Computed Value.</h2>
-        <p>Если выражение содержит что-то кроме чисел, то вычисляется при первом обращении к свойству</p>
-        <pre lang="css" class="next">
-            <code>calc(100% - 100% + 1em)</code>
-            <code class="next">   // => calc(1em + 0%) после парсинга </code>
-            <code class="next">   // => 1em при обращении</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Computed Value.</h2>
-        <p>Если выражение содержит что-то кроме чисел, то вычисляется при первом обращении к свойству</p>
-        <pre lang="css">
-            <code>width: calc(5px - 10px);</code>
-            <code class="next">    // => calc(- 5px) после парсинга </code>
-            <code class="next">    // => 0px при обращении</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Type Checking.</h2>
-        <h3>Умножение</h3>
-        Хотя бы один операнд должен быть number
-        <pre lang="css" class="next">
-            <code class="bad next">calc(10% * 10px)</code>
-            <code class="good next">calc(10% * 10) // => 100%</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Type Checking.</h2>
-        <h3>Деление</h3>
-        Правый операнд number должен быть number
-        <pre lang="css" class="next">
-            <code class="bad next">calc(100% / 3px)</code>
-            <code class="good next">calc(100% / 3) // => 33.333%</code>
-        </pre>
-    </section>
-
-    <section class="slide">
-        <h2>Calc(). Type Checking.</h2>
-        <p class="">Нельзя использовать в одном выражении длину и время.</p>
-        <pre lang="css">
-            <code class="bad next">calc(0 * 5px + 10s)</code>
-            <code style="display: none"></code>
-        </pre>
-        <div class="next">
-            <p class="">Нельзя использовать в одном выражении длину или время и число.</p>
-            <div class="columns two">
-                <pre lang="css">
-                    <code class="bad ">calc(5px + 0)</code>
-                    <code class="bad ">calc(5s + 0)</code>
-                </pre>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="slide">
-        <h2>Calc(). Range Checking.</h2>
-        <pre lang="css">
-            <code>width: calc(5px - 10px);</code>
-            <code>    // => calc(- 5px) => 0px </code>
-        </pre>
-        <div class="next">
-            <p>Разные ситуации:</p>
-            <div class="columns two">
-                <pre lang="css">
-                    <code>width: -5px;</code>
-                    <code>    // property range check</code>
-                </pre>
-                <pre lang="css">
-                    <code>width: calc(5px - 10px);</code>
-                    <code class="no-lang">    // calc range check</code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide">
-        <h2>Calc(). Range Checking.</h2>
-        <pre lang="css">
-            <code>width: calc(5px - 10px);</code>
-            <code>    // => calc(- 5px) => 0px </code>
-        </pre>
-        <div class="">
-            <p>Разные ситуации:</p>
-            <div class="columns two">
-                <pre lang="css" class="bad">
-                    <code>width: -5px;</code>
-                    <code>    // property range check</code>
-                </pre>
-                <pre lang="css">
-                    <code>width: calc(5px - 10px);</code>
-                    <code class="no-lang">    // calc range check</code>
-                </pre>
-            </div>
-        </div>
-    </section>
-    <section class="slide">
-        <h2>Calc(). Range Checking.</h2>
-        <pre lang="css">
-            <code>width: calc(5px - 10px);</code>
-            <code>    // => calc(- 5px) => 0px </code>
-        </pre>
-        <div class="">
-            <p>Разные ситуации:</p>
-            <div class="columns two">
-                <pre lang="css" class="bad">
-                    <code>width: -5px;</code>
-                    <code>    // property range check</code>
-                </pre>
-                <pre lang="css" class="good">
-                    <code>width: calc(5px - 10px);</code>
-                    <code class="no-lang">    // calc range check</code>
-                </pre>
-            </div>
-        </div>
-    </section>
+    <!--    <section class="slide">-->
+    <!--        <h2>top: calc(10px);</h2>-->
+    <!--        <img src="./access/calc_calc.png" alt="">-->
+    <!--        @TODO: нормально померить по времени-->
+    <!--    </section>-->
 
     <section class="slide">
         <h2>Итого</h2>
         <ul>
-            <li class="next">В CSS есть типизация</li>
+            <li class="next">В CSS есть данные, типы данных, проверка типов и все связанное</li>
             <li class="next">Если calc() работает не так, как вы ожидаете, проверьте типы.</li>
             <li class="next">Синтаксис большинства языков программирования описывает EBNF, но...</li>
             <li class="next">...для описания типов данных в CSS есть свой Value Definition Syntax.</li>
-            <li class="next">Его знание облегчает упрощает чтение спецификаций.</li>
+            <li class="next">Его знание облегчает чтение спецификаций.</li>
+            <li class="next">Благодаря Houdini скоро это ждет нас всех</li>
         </ul>
     </section>
 
@@ -735,8 +1068,10 @@
         <h2>Источники</h2>
         <ul>
             <li>Спецификация <a target="_blank" href="https://www.w3.org/TR/css-values-3/">css-values-3</a></li>
-            <li>Урезанная версия на <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax">MDN</a> по-русском</li>
+            <li>Урезанная версия на <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Value_definition_syntax">MDN</a> по-русски</li>
             <li>Хорошая статья о <a target="_blank" href="http://matt.might.net/articles/grammars-bnf-ebnf/">BNF</a> на английском</li>
+            <li>Рабочие черновики <a target="_blank" href="https://drafts.css-houdini.org/css-typed-om-1/#numeric-objects">Houdini</a></li>
+            <li><a target="_blank" href="https://www.youtube.com/watch?v=4kr5K-nWG3Y">Доклад</a> про Houdini от Никиты Дубко</li>
         </ul>
     </section>
 
@@ -748,6 +1083,8 @@
             <li>ВКонтакте – <a href="https://vk.com/ariarzer">@ariarzer</a></li>
             <li>Telegram – <a href="https://twitter.com/ariarzer">@ariarzer</a></li>
         </ul>
+
+        <p>Презентация сделана с помощью <a href="https://shwr.me/">Shower</a></p>
     </section>
 
     <footer class="badge">

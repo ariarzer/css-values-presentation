@@ -1,0 +1,21 @@
+#head {
+    background-image: url('./access/front_conf_fon.png');
+    background-size: cover;
+}
+
+#head h2,
+#head h3 {
+    color: black;
+}
+
+#head h2 {
+    font-size: 90px;
+}
+
+#head h3 {
+    font-size: 40px;
+}
+
+.class#id
+
+

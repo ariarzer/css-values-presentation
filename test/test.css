@@ -1,0 +1,19 @@
+.loader {
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  border: 3px solid transparent;
+  border-top: 3px solid blue;
+  border-left: 3px solid blue;
+  border-radius: 50%;
+  animation: loader infinite 2s;
+}
+
+@keyframes loader {
+  0% {
+    top: calc(10%);
+  }
+  100% {
+    top: calc(100%);
+  }
+}
