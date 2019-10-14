@@ -79,7 +79,7 @@ const grammar = [
     color: DARK_ORANGE
   },
   {
-    regexp: /(?<!au|s)(to)/g,
+    regexp: /(?<!au|s)(to)(?!ken)/g,
     color: DARK_ORANGE
   },
   {
@@ -120,6 +120,8 @@ const grammar = [
       'inherit',
       'inset',
       'medium',
+      'thick',
+      'thin',
       'solid',
       'opacity',
       'ease',
